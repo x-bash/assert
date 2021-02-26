@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 dev.assert.push(){
     git remote remove gitee 2>/dev/null
     git remote add gitee git@gitee.com:x-bash/assert.git
@@ -6,14 +5,4 @@ dev.assert.push(){
 
     git remote remove github 2>/dev/null
     git remote add github git@github.com:x-bash/assert.git
-=======
-dev.dict.push(){
-    git remote remove gitee 2>/dev/null
-    git remote add gitee git@gitee.com:x-bash/dict.git
-    git push gitee
-
-    git remote remove github 2>/dev/null
-    git remote add github git@github.com:x-bash/dict.git
->>>>>>> 6b2a6492bb03b5c03d9e7ec93101b5d5945f69bc
-    git push github
 }
