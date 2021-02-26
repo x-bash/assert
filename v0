@@ -8,6 +8,8 @@ selftest(){
     doctest "${BASH_SOURCE[0]}"
 }
 
+xrc str
+
 # assert(){
 #     if [ $# -ne 0 ]; then
 #         eval "$*"
@@ -233,7 +235,8 @@ assert_eq(){
 }
 
 assert_stdout(){
-    local e="$(cat)"
+    local e
+    e="$(cat)"
     assert_eq "$e" "$(eval "$@")"
 }
 
