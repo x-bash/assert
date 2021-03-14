@@ -1,4 +1,4 @@
-# shellcheck shell=sh disable=SC2039
+# shellcheck shell=sh disable=SC2039,SC1001
 
 # author:       Li Junhao           l@x-cmd.com    edwinjhlee.github.io
 # maintainer:   Li Junhao
@@ -74,14 +74,14 @@ assert(){
 
     local val="$1" op="$2"; shift 2
     case "$op" in
-    =~)
+    \=\~)
         eval "$CHOICE_LIST_MUST_NOT_BE_EMTPY"
         if ! assert_within_regex "$val" "$@"; then
             echo "ERROR: '$val' NOT match any regex defined" >&2
             # param.help.show
             return 1
         fi;;
-    =)
+    \=)
         eval "$CHOICE_LIST_MUST_NOT_BE_EMTPY"
         if ! assert_within "$val" "$@"; then
             # echo "$val" "$@" >&2
@@ -89,7 +89,7 @@ assert(){
             # param.help.show
             return 1
         fi ;;
-    =str | =nullable | =int)
+    \=str|\=nullable|\=int)
 
         if [ "$op" = "=nullable" ]; then
             if [ -z "$val" ]; then
@@ -119,7 +119,7 @@ assert(){
                 return 1
             fi 
         } ;;
-    =\[?\] | =?)
+    \=\[?\]|\=?)
         eval "$CHOICE_LIST_MUST_NOT_BE_EMTPY"
 
         # if [[ "$op" == '=['?']' ]]; then
@@ -141,7 +141,7 @@ assert(){
 $val
 A
     ;;
-    =~\[?\] | =~? )
+    \=\~\[?\]|\=\~? )
         eval "$CHOICE_LIST_MUST_NOT_BE_EMTPY"
 
         # if [[ "$op" == '=~['?']' ]]; then
